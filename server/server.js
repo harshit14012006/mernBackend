@@ -22,6 +22,11 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Property routes
 app.use('/api/properties', propertyRoutes);
 
+// Root route to confirm APIs are deployed successfully
+app.get('/', (req, res) => {
+    res.send('<h1>APIs are successfully deployed and available for use</h1>');
+});
+
 // MongoDB connection
 const DB = process.env.MONGODB_URI || `mongodb+srv://harshit14012006:harshit14012006@cluster0.rvw7t6o.mongodb.net/realestateDB?retryWrites=true&w=majority`;
 
@@ -33,4 +38,5 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    console.log('APIs are successfully deployed and available for use');
 });
